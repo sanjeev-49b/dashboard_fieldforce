@@ -268,15 +268,22 @@ def signal_issues():
     """Top issues - using outcome_status as proxy for issues"""
     try:
         filters = parse_filters(request.args)
-        where_clause = build_where_clause(filters, use_date_join=True)
+        # Build WHERE clause without date join for this query
+        days = filters.get('time_range', '7')
+        where_parts = [f"fc.call_date >= date('now', '-{days} days')"]
+        
+        if 'region_id' in filters:
+            where_parts.append(f"fc.region_id = {filters['region_id']}")
+        if 'channel_id' in filters:
+            where_parts.append(f"fc.channel_id = {filters['channel_id']}")
+        
+        where_clause = " AND ".join(where_parts) if where_parts else "1=1"
         
         conn = get_db()
         cursor = conn.cursor()
         # Group by outcome_status/reason_for_outcome since issue table doesn't exist
-        # Use ROW_NUMBER() to generate unique issue_id
         cursor.execute(f"""
             SELECT 
-                ROW_NUMBER() OVER (ORDER BY COUNT(DISTINCT fc.conversation_id) DESC) as issue_id,
                 COALESCE(fc.outcome_status, 'Unknown') as issue_name,
                 COUNT(DISTINCT fc.conversation_id) as volume,
                 ROUND(AVG(fc.overall_sentiment), 2) as avg_sentiment,
@@ -284,7 +291,6 @@ def signal_issues():
                                 WHEN fc.conversion_confidence > 0.5 THEN 2 ELSE 1 END), 2) as severity_score,
                 COUNT(CASE WHEN fc.has_appointment = 1 THEN 1 END) as conversions
             FROM fact_conversation fc
-            LEFT JOIN dim_date dd ON fc.call_date = dd.calendar_date
             WHERE {where_clause}
             GROUP BY fc.outcome_status, fc.reason_for_outcome
             ORDER BY volume DESC
