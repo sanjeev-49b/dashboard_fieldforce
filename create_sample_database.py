@@ -1,6 +1,6 @@
 """
 Create sample FieldForce database with example data
-Run this to generate fieldforce.db with all required tables
+Run this to generate field_intelligence.db with all required tables
 """
 
 import sqlite3
@@ -9,7 +9,7 @@ import random
 
 def create_database():
     # Connect to database (creates if doesn't exist)
-    conn = sqlite3.connect('fieldforce.db')
+    conn = sqlite3.connect('field_intelligence.db')
     cursor = conn.cursor()
     
     print("Creating tables...")
@@ -236,7 +236,7 @@ def create_database():
     conn.close()
     
     print("\n✅ Database created successfully!")
-    print(f"📊 Created 'fieldforce.db' with:")
+    print(f"📊 Created 'field_intelligence.db' with:")
     print("   - 5 Regions")
     print("   - 4 Teams")
     print("   - 4 Channels")
