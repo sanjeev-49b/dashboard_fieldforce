@@ -16,6 +16,12 @@ CORS(app, resources={r"/api/*": {"origins": "*"}})
 # Database configuration - works for both local and Azure
 DB_FILE = os.environ.get('DB_FILE', 'fieldforce.db')
 
+# Test endpoint (no database needed)
+@app.route('/test')
+def test():
+    """Simple test endpoint"""
+    return jsonify({'status': 'success', 'message': 'Backend is working!', 'timestamp': datetime.now().isoformat()})
+
 # Serve React app
 @app.route('/')
 def serve():
