@@ -1,0 +1,81 @@
+/* Contextual Filters Sidebar */
+
+.contextual-filters {
+  width: 280px;
+  background: white;
+  border-right: 1px solid var(--soft-steel);
+  padding: var(--spacing-lg);
+  overflow-y: auto;
+}
+
+.filters-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: var(--spacing-md);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filter-section {
+  margin-bottom: var(--spacing-lg);
+}
+
+.section-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-md);
+  display: block;
+}
+
+.filter-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.filter-option:hover {
+  background: var(--light-gray);
+  color: var(--command-blue);
+}
+
+.filter-option input[type="radio"] {
+  cursor: pointer;
+  accent-color: var(--command-blue);
+}
+
+.filter-option input[type="checkbox"] {
+  cursor: pointer;
+  accent-color: var(--command-blue);
+}
+
+.filter-option span {
+  flex: 1;
+}
+
+@media (max-width: 1024px) {
+  .contextual-filters {
+    width: 240px;
+    padding: var(--spacing-md);
+  }
+}
+
+@media (max-width: 768px) {
+  .contextual-filters {
+    display: none;
+  }
+}
