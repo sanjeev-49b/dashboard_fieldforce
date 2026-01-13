@@ -19,7 +19,7 @@ dist/
 *.egg
 
 # Database
-*.db
+# *.db  # Commented out to include fieldforce.db in deployment
 *.sqlite
 *.sqlite3
 

@@ -14,7 +14,14 @@ app = Flask(__name__, static_folder='build', static_url_path='')
 CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 # Database configuration - works for both local and Azure
-DB_FILE = os.environ.get('DB_FILE', 'fieldforce.db')
+# For Azure: /home/site/fieldforce.db (persistent storage)
+# For local: ./fieldforce.db
+if os.path.exists('/home/site'):
+    # Running on Azure
+    DB_FILE = os.environ.get('DB_FILE', '/home/site/fieldforce.db')
+else:
+    # Running locally
+    DB_FILE = os.environ.get('DB_FILE', 'fieldforce.db')
 
 # Test endpoint (no database needed)
 @app.route('/test')
