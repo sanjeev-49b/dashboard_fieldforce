@@ -10,3 +10,7 @@ export DEBUG=False
 # Start Gunicorn with Flask app
 gunicorn --bind=0.0.0.0:8000 --timeout 600 --workers=4 backend:app
 
+
+
+
+
