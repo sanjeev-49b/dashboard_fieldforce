@@ -52,8 +52,8 @@ jobs:
         cp startup.sh deployment/
         cp web.config deployment/
         # Copy database if it exists (for initial deployment)
-        if [ -f fieldforce.db ]; then
-          cp fieldforce.db deployment/
+        if [ -f field_intelligence.db ]; then
+          cp field_intelligence.db deployment/
         fi
 
     - name: 🚀 Deploy to Azure Web App
