@@ -97,15 +97,19 @@ function Home({ filters, loading, setLoading }) {
           },
         ]}
         layout={{
-          title: 'Daily Conversation Pulse',
+          title: {
+            text: 'Daily Conversation Pulse',
+            y: 0.98,
+            yanchor: 'top'
+          },
           xaxis: { title: 'Date' },
           yaxis: { title: 'Conversations' },
           yaxis2: { title: 'Sentiment', overlaying: 'y', side: 'right' },
           hovermode: 'x unified',
           plot_bgcolor: '#F5F7FA',
           paper_bgcolor: '#FFFFFF',
-          margin: { t: 40, r: 80, b: 40, l: 60 },
-          height: 320,
+          margin: { t: 60, r: 80, b: 50, l: 60 },
+          height: 360,
         }}
         config={{ 
           responsive: true,
@@ -131,12 +135,16 @@ function Home({ filters, loading, setLoading }) {
           marker: { color: '#E74C3C' },
         }]}
         layout={{
-          title: 'Top Issues by Volume',
+          title: {
+            text: 'Top Issues by Volume',
+            y: 0.98,
+            yanchor: 'top'
+          },
           xaxis: { title: 'Conversations' },
           plot_bgcolor: '#F5F7FA',
           paper_bgcolor: '#FFFFFF',
-          margin: { t: 40, r: 20, b: 40, l: 150 },
-          height: 320,
+          margin: { t: 60, r: 20, b: 50, l: 150 },
+          height: 360,
         }}
         config={{ 
           responsive: true,
@@ -166,10 +174,14 @@ function Home({ filters, loading, setLoading }) {
           marker: { colors: ['#E74C3C', '#E67E22', '#2ECC71'] }
         }]}
         layout={{
-          title: 'Severity Distribution',
+          title: {
+            text: 'Severity Distribution',
+            y: 0.98,
+            yanchor: 'top'
+          },
           paper_bgcolor: '#FFFFFF',
-          height: 320,
-          margin: { t: 40, r: 20, b: 20, l: 20 },
+          height: 360,
+          margin: { t: 60, r: 20, b: 40, l: 20 },
         }}
         config={{ 
           responsive: true,

@@ -55,21 +55,31 @@ function FieldSignal({ filters, onDrilldown, loading, setLoading }) {
   ];
 
   const pulseLayout = {
-    title: 'Daily Conversation Pulse',
+    title: {
+      text: 'Daily Conversation Pulse',
+      y: 0.98,
+      yanchor: 'top'
+    },
     xaxis: { title: 'Date' },
     yaxis: { title: 'Conversations' },
     yaxis2: { title: 'Sentiment', overlaying: 'y', side: 'right' },
     hovermode: 'x unified',
     plot_bgcolor: '#F2F4F7',
     paper_bgcolor: 'white',
-    margin: { t: 50, r: 60 },
+    margin: { t: 60, r: 60, b: 50, l: 60 },
+    height: 380,
   };
 
   const pulseConfig = {
     responsive: true,
     displayModeBar: true,
     modeBarButtonsToRemove: ['pan2d', 'select2d', 'lasso2d', 'autoScale2d', 'toggleSpikelines'],
+    modeBarButtonsToAdd: [],
     displaylogo: false,
+    modeBarStyle: {
+      orientation: 'h',
+      bgcolor: 'transparent'
+    },
     toImageButtonOptions: {
       format: 'png',
       filename: 'daily_pulse',
@@ -88,11 +98,16 @@ function FieldSignal({ filters, onDrilldown, loading, setLoading }) {
   }];
 
   const issuesLayout = {
-    title: 'Top Issues by Volume',
+    title: {
+      text: 'Top Issues by Volume',
+      y: 0.98,
+      yanchor: 'top'
+    },
     xaxis: { title: 'Conversations' },
     plot_bgcolor: '#F2F4F7',
     paper_bgcolor: 'white',
-    margin: { l: 200, t: 50 },
+    margin: { l: 200, t: 60, b: 50, r: 40 },
+    height: 380,
   };
 
   const issuesConfig = {
@@ -113,8 +128,14 @@ function FieldSignal({ filters, onDrilldown, loading, setLoading }) {
   }];
 
   const severityLayout = {
-    title: 'Severity Distribution',
+    title: {
+      text: 'Severity Distribution',
+      y: 0.98,
+      yanchor: 'top'
+    },
     paper_bgcolor: 'white',
+    margin: { t: 60, b: 40, l: 40, r: 40 },
+    height: 380,
   };
 
   const severityConfig = {

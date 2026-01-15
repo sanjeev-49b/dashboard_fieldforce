@@ -388,6 +388,23 @@ html, body, #root {
 }
 
 /* ============================================================================
+   PLOTLY CHARTS - Fix overlapping toolbar
+   ============================================================================ */
+
+.js-plotly-plot .plotly .modebar {
+  top: 8px !important;
+  right: 8px !important;
+}
+
+.js-plotly-plot .plotly .modebar-btn {
+  margin: 0 2px !important;
+}
+
+.js-plotly-plot .plotly .gtitle {
+  margin-top: 8px !important;
+}
+
+/* ============================================================================
    CARDS
    ============================================================================ */
 
