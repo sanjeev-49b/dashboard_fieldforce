@@ -107,7 +107,12 @@ function Home({ filters, loading, setLoading }) {
           margin: { t: 40, r: 80, b: 40, l: 60 },
           height: 320,
         }}
-        config={{ responsive: true }}
+        config={{ 
+          responsive: true,
+          displayModeBar: true,
+          modeBarButtonsToRemove: ['pan2d', 'select2d', 'lasso2d', 'autoScale2d', 'toggleSpikelines'],
+          displaylogo: false,
+        }}
         style={{ width: '100%', height: '320px' }}
       />
     );
@@ -133,7 +138,12 @@ function Home({ filters, loading, setLoading }) {
           margin: { t: 40, r: 20, b: 40, l: 150 },
           height: 320,
         }}
-        config={{ responsive: true }}
+        config={{ 
+          responsive: true,
+          displayModeBar: true,
+          modeBarButtonsToRemove: ['pan2d', 'select2d', 'lasso2d', 'autoScale2d', 'toggleSpikelines'],
+          displaylogo: false,
+        }}
         style={{ width: '100%', height: '320px' }}
       />
     );
@@ -161,7 +171,12 @@ function Home({ filters, loading, setLoading }) {
           height: 320,
           margin: { t: 40, r: 20, b: 20, l: 20 },
         }}
-        config={{ responsive: true }}
+        config={{ 
+          responsive: true,
+          displayModeBar: true,
+          modeBarButtonsToRemove: ['pan2d', 'select2d', 'lasso2d', 'autoScale2d', 'toggleSpikelines', 'zoom2d'],
+          displaylogo: false,
+        }}
         style={{ width: '100%', height: '320px' }}
       />
     );

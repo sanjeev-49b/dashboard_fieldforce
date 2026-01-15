@@ -65,6 +65,19 @@ function FieldSignal({ filters, onDrilldown, loading, setLoading }) {
     margin: { t: 50, r: 60 },
   };
 
+  const pulseConfig = {
+    responsive: true,
+    displayModeBar: true,
+    modeBarButtonsToRemove: ['pan2d', 'select2d', 'lasso2d', 'autoScale2d', 'toggleSpikelines'],
+    displaylogo: false,
+    toImageButtonOptions: {
+      format: 'png',
+      filename: 'daily_pulse',
+      height: 500,
+      width: 800,
+    }
+  };
+
   // Issues chart data
   const issuesData = [{
     x: issues.map(i => i.volume),
@@ -82,6 +95,13 @@ function FieldSignal({ filters, onDrilldown, loading, setLoading }) {
     margin: { l: 200, t: 50 },
   };
 
+  const issuesConfig = {
+    responsive: true,
+    displayModeBar: true,
+    modeBarButtonsToRemove: ['pan2d', 'select2d', 'lasso2d', 'autoScale2d', 'toggleSpikelines'],
+    displaylogo: false,
+  };
+
   // Severity distribution
   const severityData = [{
     labels: severityDist.map(s => s.severity),
@@ -97,6 +117,13 @@ function FieldSignal({ filters, onDrilldown, loading, setLoading }) {
     paper_bgcolor: 'white',
   };
 
+  const severityConfig = {
+    responsive: true,
+    displayModeBar: true,
+    modeBarButtonsToRemove: ['pan2d', 'select2d', 'lasso2d', 'autoScale2d', 'toggleSpikelines', 'zoom2d'],
+    displaylogo: false,
+  };
+
   return (
     <div className="field-signal">
       <div className="module-header">
@@ -107,17 +134,17 @@ function FieldSignal({ filters, onDrilldown, loading, setLoading }) {
       <div className="charts-grid">
         {/* Pulse */}
         <div className="chart-card">
-          <Plot data={pulseData} layout={pulseLayout} />
+          <Plot data={pulseData} layout={pulseLayout} config={pulseConfig} />
         </div>
 
         {/* Issues */}
         <div className="chart-card">
-          <Plot data={issuesData} layout={issuesLayout} />
+          <Plot data={issuesData} layout={issuesLayout} config={issuesConfig} />
         </div>
 
         {/* Severity */}
         <div className="chart-card">
-          <Plot data={severityData} layout={severityLayout} />
+          <Plot data={severityData} layout={severityLayout} config={severityConfig} />
         </div>
       </div>
 
