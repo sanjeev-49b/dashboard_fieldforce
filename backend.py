@@ -14,11 +14,16 @@ app = Flask(__name__, static_folder='build', static_url_path='')
 CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 # Database configuration - works for both local and Azure
-# For Azure: /home/site/field_intelligence.db (persistent storage)
+# For Azure: Check multiple locations (wwwroot and persistent storage)
 # For local: ./field_intelligence.db
-if os.path.exists('/home/site'):
-    # Running on Azure
-    DB_FILE = os.environ.get('DB_FILE', '/home/site/field_intelligence.db')
+if os.path.exists('/home/site/wwwroot'):
+    # Running on Azure - check wwwroot first (deployment location)
+    if os.path.exists('/home/site/wwwroot/field_intelligence.db'):
+        DB_FILE = '/home/site/wwwroot/field_intelligence.db'
+    elif os.path.exists('/home/site/field_intelligence.db'):
+        DB_FILE = '/home/site/field_intelligence.db'
+    else:
+        DB_FILE = os.environ.get('DB_FILE', '/home/site/wwwroot/field_intelligence.db')
 else:
     # Running locally
     DB_FILE = os.environ.get('DB_FILE', 'field_intelligence.db')
